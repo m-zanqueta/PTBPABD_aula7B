@@ -1,5 +1,9 @@
+-- Questão 01
+
+-- Remove a procedure caso já exista
 DROP PROCEDURE IF EXISTS dbo.salaryHistogram
 
+-- Cria a procedure
 CREATE PROCEDURE dbo.salaryHistogram @numIntervalos INT AS
 WITH stats AS (
     SELECT MIN(salary) AS salMin, MAX(salary) AS salMax FROM instructor
@@ -30,4 +34,5 @@ GROUP BY
     s.salMax
 ORDER BY nums.n
 
+-- Executa a procedure com 5 intervalos
 EXEC dbo.salaryHistogram 5
